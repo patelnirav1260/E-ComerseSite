@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Web.UI.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form>
+    <div class="container row">
+        @foreach(var product in Model)
+        {
+        <partial name="_ProductPartial" for="@product"/>
+        }
+    </div>
+</form>

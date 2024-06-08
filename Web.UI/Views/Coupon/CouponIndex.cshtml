@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Coupon>
+
+@{
+    ViewData["Title"] = "CouponIndex";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2 class="text-white">CouponList</h2>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end mb-3">
+                <a class="btn btn-primary" asp-controller="Coupon" asp-action="CreateCoupon">
+                    <i class="bi bi-plus-square"></i> Create New Coupon
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover table-striped">
+                    <thead>
+                        <tr class="fs-6">
+                            <th>@Html.DisplayNameFor(model => model.CouponId)</th>
+                            <th>@Html.DisplayNameFor(model => model.CouponCode)</th>
+                            <th>@Html.DisplayNameFor(model => model.DiscountAmount)</th>
+                            <th>@Html.DisplayNameFor(model => model.MinAmount)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 16px">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.CouponId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CouponCode)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DiscountAmount)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MinAmount)</td>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="DeleteCoupon" asp-controller="Coupon" asp-route-CouponId="@item.CouponId">
+                                        <i class="bi bi-archive-fill"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="prev">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="1">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="2">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="3">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="next">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

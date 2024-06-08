@@ -1,0 +1,89 @@
+﻿@model Web.UI.Models.Dto.ProductDto
+
+@{
+    ViewData["Title"] = "EditProduct";
+}
+
+<div class="container" style="padding: 5%;">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header text-center">
+            <h2>Update Product</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="EditProduct" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group row pb-3">
+                    <label for="Name" class="col-sm-3 col-form-label fs-5">Product Id:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ProductId" class="form-control" readonly placeholder="Enter product name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <label for="Name" class="col-sm-3 col-form-label fs-5">Product Name:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control" placeholder="Enter product name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <label for="Price" class="col-sm-3 col-form-label fs-5">Product Price:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Price" class="form-control" placeholder="Enter product price" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <label for="CategoryName" class="col-sm-3 col-form-label fs-5">Category:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="CategoryName" class="form-control" placeholder="Enter product category" />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <label for="ImageUrl" class="col-sm-3 col-form-label fs-5">Product Image:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ImageFile" type="file" class="form-control" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <label for="Description" class="col-sm-3 col-form-label fs-5">Description:</label>
+                    <div class="col-sm-9">
+                        <textarea asp-for="Description" class="form-control" placeholder="Enter product description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row pb-3">
+                    <div class="col-sm-9 offset-sm-3">
+                        <div class="d-flex justify-content-between flex-wrap gap-2">
+                            <div class="d-grid flex-grow-1">
+                                <a class="btn btn-lg btn-primary" asp-controller="Product" asp-action="ProductIndex">Go to List</a>
+                            </div>
+                            <div class="d-grid flex-grow-1">
+                                <input type="submit" value="Edit" class="btn btn-lg btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

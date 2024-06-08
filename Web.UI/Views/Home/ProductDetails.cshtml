@@ -1,0 +1,54 @@
+﻿@model Web.UI.Models.Dto.ProductDto
+
+@{
+    ViewData["Title"] = "ProductDetails";
+}
+<form asp-action="AddToCart" method="post" enctype="multipart/form-data">
+    <input  asp-for="@Model.ProductId" hidden/>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="border rounded p-4 shadow-lg">
+                <!-- Header with Name and Price -->
+                <div class="d-flex justify-content-between align-items-center mb-4 bg-primary text-white p-3 rounded">
+                    <h2 class="card-title mb-0">@Model.Name</h2>
+                    <span class="text-white" style="font-size:24px;">@string.Format("{0:c}", @Model.Price)</span>
+                </div>
+
+                <div class="row">
+                    <!-- Image on the Left -->
+                    <div class="col-12 col-md-5 mb-3 mb-md-0">
+                        <img src="/Images/@Model.ImageUrl" class="img-fluid rounded" style="width: 100%; height: auto; object-fit: cover;" />
+                    </div>
+
+                    <!-- Right Side Content -->
+                    <div class="col-12 col-md-7 d-flex flex-column">
+                        <!-- Discount Coupon Button -->
+                        <button class="btn btn-warning mb-3 align-self-end">Get Discount Coupon</button>
+
+                        <div class="d-flex justify-content-start mb-2">
+                            <span class="badge bg-warning text-dark p-2">@Model.CategoryName</span>
+                        </div>
+
+    
+                        <p class="card-text flex-grow-1">@Model.Description</p>
+
+                         
+                        <div class="d-flex align-items-center mt-3">
+                            <label for="itemCount" class="me-2 mb-0">Item Count:</label>
+                            <input type="number" id="itemCount" class="form-control" style="width: 80px;" min="1" value="1" asp-for="Count">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer with Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="btn btn-secondary flex-grow-1 me-2" asp-action="Index" asp-controller="Home">Back to Menu</a>
+                    <button type="submit" class="btn btn-success flex-grow-1">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+

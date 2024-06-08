@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Web.UI.Models.Product>
+
+@{
+    ViewData["Title"] = "ProductIndex";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h2 class="text-white">ProductList</h2>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end mb-3">
+                <a class="btn btn-primary" asp-controller="Product" asp-action="CreateProduct">
+                    <i class="bi bi-plus-square"></i> Create New Product
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-hover table-striped">
+                    <thead>
+                        <tr class="fs-6">
+                            <th>@Html.DisplayNameFor(model => model.ProductId)</th>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Price)</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 16px">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                <td></td>
+                                <td>
+                                    <a class="btn btn-success" asp-controller="Product" asp-action="EditProduct" asp-route-ProductId="@item.ProductId">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    <a class="btn btn-danger" asp-controller="Product" asp-action="DeleteProduct" asp-route-ProductId="@item.ProductId">
+                                        <i class="bi bi-archive-fill"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="prev">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="1">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="2">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="3">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" id="next">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
